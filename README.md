@@ -4,6 +4,9 @@
 "전화번호 모음"이 아니라, **"이 정도로 도움받아도 되는지 망설이는 사람의 문턱을 낮추는 것"** 이
 이 사이트의 차별점입니다.
 
+- 🔗 **GitHub**: https://github.com/diligentlee2007-bot/maeum-waiting-room
+- 🌐 **배포**: https://maeum-waiting-room.vercel.app
+
 ## 흐름 (2단계 · 상태별 맞춤)
 
 1. **지금 마음 상태 고르기** (버튼 4개)
