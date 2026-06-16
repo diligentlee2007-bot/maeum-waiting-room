@@ -1,26 +1,47 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* 배경: 아이보리 / 흰색 */
+  --color-ivory: #fbf8f3;
+  --color-cream: #f5f0e8;
+  --color-paper: #ffffff;
+
+  /* 차분한 파스텔 포인트 */
+  --color-calm: #a8c7d9; /* soft blue */
+  --color-calm-deep: #6f9bb3;
+  --color-mint: #b6d9c7; /* soft green */
+  --color-mint-deep: #79b095;
+  --color-peach: #f4cab0; /* soft peach */
+  --color-peach-deep: #e0a07e;
+  --color-lavender: #cbc1e0; /* soft lavender */
+  --color-lavender-deep: #9d8fc4;
+
+  /* 긴급(119) 강조: 너무 자극적이지 않은 따뜻한 코랄 */
+  --color-urgent: #e8907e;
+  --color-urgent-deep: #d2705c;
+
+  /* 텍스트 */
+  --color-ink: #3d3a36;
+  --color-ink-soft: #6b665f;
+
+  --font-sans: "Pretendard", "Apple SD Gothic Neo", system-ui, -apple-system,
+    sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+/* 모바일 버튼 누름 하이라이트 제거 */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }

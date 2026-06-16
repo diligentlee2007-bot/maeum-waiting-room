@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 마음대기실 (Maeum Waiting Room)
 
-## Getting Started
+마음이 힘든 사람이 **망설임 없이 도움을 청하는 첫 걸음**을 떼도록 돕는 공익 웹사이트 MVP입니다.
+"전화번호 모음"이 아니라, **"이 정도로 도움받아도 되는지 망설이는 사람의 문턱을 낮추는 것"** 이
+이 사이트의 차별점입니다.
 
-First, run the development server:
+## 흐름 (2단계 · 상태별 맞춤)
+
+1. **지금 마음 상태 고르기** (버튼 4개)
+2. 고른 마음에 맞춰 **위로 문구 · 도움 요청 문장 · 연결 카드가 달라지는 맞춤 결과**
+
+선택한 상태에 따라 다음과 같이 결과가 달라집니다.
+
+| 상태                          | 맞춤 결과의 중심                                                       |
+| ----------------------------- | --------------------------------------------------------------------- |
+| 그냥 너무 힘들어요            | 위로 + "이 정도로 도움받아도 됩니다" + 부담 낮은 문장 + 채팅 상담      |
+| 누군가에게 말하고 싶어요      | 친구·가족·멘토별 도움 요청 문장 생성 + 복사 + 상대 응답 안내           |
+| 병원이나 상담을 알아보고 싶어요 | 공식 상담전화·채팅·자가검진·센터찾기 기관 카드 모음                    |
+| 지금 혼자 있으면 위험할 것 같아요 | 119·109 즉시 연결 우선 + 곁에 있어줄 사람에게 보낼 문장 + 채팅 상담 |
+
+## 안전 원칙 (Safety by design)
+
+이 프로젝트는 의도적으로 다음을 **하지 않습니다.**
+
+- ❌ AI 상담 / 챗봇 없음
+- ❌ 자살 위험도 점수화·진단 없음
+- ❌ 자가검진 문항 자체 게재 없음 — 공식 자가검진 페이지로 **외부 링크**만 제공
+- ❌ 로그인 / 데이터베이스 / 데이터 저장 없음
+- ❌ 게시판 / 댓글 / 커뮤니티 없음
+- ❌ 외부 API 호출 없음 — 모든 상태는 브라우저 메모리(`useState`)에서만 사용
+
+> 사용자가 입력하거나 선택한 어떤 정보도 저장·전송되지 않습니다.
+> 마음대기실은 **전문 상담·진단·치료를 대신하지 않으며**, 실제 도움은 공식 기관으로 연결합니다.
+> 모든 외부 링크는 새 탭(`target="_blank" rel="noopener noreferrer"`)으로 열립니다.
+
+## 연결되는 공식 기관
+
+| 종류 | 기관                              | 연결                                                          |
+| ---- | --------------------------------- | ------------------------------------------------------------ |
+| 전화 | 자살예방 상담전화 (109)           | `tel:109`                                                    |
+| 전화 | 정신건강 위기상담전화 (1577-0199) | `tel:15770199`                                               |
+| 전화 | 청소년 상담전화 (1388)            | `tel:1388`                                                   |
+| 전화 | 생명의전화 (1588-9191)            | `tel:15889191`                                               |
+| 전화 | 긴급 구조 (119)                   | `tel:119`                                                    |
+| 채팅 | 마들랜 자살예방 SNS 상담          | https://www.129.go.kr/etc/madlan                             |
+| 채팅 | 청소년 1388 채팅상담              | https://www.1388.go.kr/                                      |
+| 링크 | 국가정신건강정보포털 자가검진     | https://www.mentalhealth.go.kr/portal/mdexmnDtl/mdexmnTypeList.do |
+| 링크 | 정신건강복지센터 찾기             | https://www.mentalhealth.go.kr/portal/health/fac/PotalHealthFacListTab1.do?tab1no=tab1no1 |
+
+상단에는 항상 **"지금 위험하다면 119 또는 109로 연결하세요"** 배너가 고정 노출됩니다.
+
+> ⚠️ 배포 전 각 번호·URL의 현행 운영 여부를 보건복지부·한국생명존중희망재단 등
+> 공식 출처로 한 번 더 확인하는 것을 권장합니다. (전화·URL은 `lib/resources.ts`에 중앙화)
+
+## 기술 스택
+
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS v4
+
+## 개발
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 디자인 방향
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+흰색/아이보리 배경에 차분한 파스텔 포인트, 모바일 우선, 큰 버튼, 따뜻하고 안정적인 톤.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 폴더 구조
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+app/
+  layout.tsx        # 메타데이터 + 상단 고정 응급 배너
+  page.tsx          # step(1·2) — 상태 선택 → 맞춤 결과
+  globals.css       # Tailwind + 파스텔 색상 토큰
+components/
+  EmergencyBanner.tsx
+  ProgressDots.tsx
+  BigButton.tsx          # 공용 큰 버튼 (tel: / 외부 링크)
+  StepFeeling.tsx        # 1화면 — 상태 4개
+  StepResult.tsx         # 2화면 — 상태별 맞춤 카드 (받는사람 토글 포함)
+  cards/
+    ResourceCard.tsx     # 카드 타입별 분기 렌더러
+    CopyMessageCard.tsx  # 도움 요청 문장 + 복사
+lib/
+  data.ts           # 상태별 흐름 설정 + 받는사람별 문장 생성
+  resources.ts      # 공식 기관 전화·URL 중앙 관리
+```
